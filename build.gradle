@@ -1,0 +1,22 @@
+apply plugin: 'java-library'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'kotlin'
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	testImplementation 'junit:junit:4.12'
+}
+
+version = '0.0.1'
+
+jar {
+	manifest {
+		attributes(
+			'Implementation-Title': project.name, 'Implementation-Version': project.version
+		)
+	}
+}
