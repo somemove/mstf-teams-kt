@@ -5,13 +5,19 @@
 ## Install
 
 ```groovy
+// Define the dependency version
+buildscript {
+	ext {
+		msftTeamsVersion = 'THE_VERSION'
+	}
+}
 // Add the Jitpack repository
 repositories {
 	maven { url 'https://jitpack.io' }
 }
 // Add the dependency
 dependencies {
-	compile "com.github.somemove:mstf-teams-kt:0.0.1"
+	compile "com.github.somemove:mstf-teams-kt:$msftTeamsVersion"
 }
 ```
 
