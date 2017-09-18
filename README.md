@@ -1,7 +1,6 @@
 # Microsoft Teams client for Kotlin (Java)
 
-[![Release](https://jitpack.io/v/somemove/mstf-teams-kt.svg?style=flat-square)]
-(https://jitpack.io/#somemove/mstf-teams-kt)
+[![Release](https://jitpack.io/v/somemove/mstf-teams-kt.svg?style=flat-square)](https://jitpack.io/#somemove/mstf-teams-kt)
 
 ## Install
 
