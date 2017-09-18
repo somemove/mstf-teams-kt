@@ -26,23 +26,23 @@ dependencies {
 ### Kotlin
 
 ```kotlin
-val payload = JSONObject()
-	.put("text", "The message text...")
+val message = ConnectorMessage(title = "Title", text = "The message text...")
 
 val webhookURL : String = "https://..."
 val client : Teams = Teams().with(webhookURL)
 
-val result : Boolean = client.publish(payload)
+val result : Boolean = client.publish(message)
 ```
 
 ### Java
 
 ```java
-JSONObject payload = new JSONObject()
-	.put("text", "The message text...");
+ConnectorMessage message = new ConnectorMessage()
+message.setTitle("Test");
+message.setText("Test Message");
 
 String webhookURL = "https://...";
 Teams client = new Teams().with(webhookURL);
 
-boolean result = client.publish(payload);
+boolean result = client.publish(message);
 ```
