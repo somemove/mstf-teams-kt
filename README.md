@@ -7,7 +7,6 @@
 ```groovy
 // Add the Jitpack repository
 repositories {
-	...
 	maven { url 'https://jitpack.io' }
 }
 // Add the dependency
@@ -23,7 +22,7 @@ val payload = JSONObject()
 payload.put("text", "The message text...")
 
 val webhookURL = "https://..."
-val teams = Teams.default().with(webhookURL)
+val teams = Teams.getDefault().with(webhookURL)
 
 val result : Boolean = teams.publish(payload)
 ```

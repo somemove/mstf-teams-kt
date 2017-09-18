@@ -17,11 +17,11 @@ class Teams private constructor(private var restTemplate : RestTemplate) {
 	companion object {
 		@JvmStatic() private val log : Logger by lazy { LoggerFactory.getLogger(Teams::class.java) }
 
-		fun using(restTemplate : RestTemplate) : Teams {
+		@JvmStatic() fun using(restTemplate : RestTemplate) : Teams {
 			return Teams(restTemplate)
 		}
 
-		fun default() = using(RestTemplate())
+		@JvmStatic() fun getDefault() = using(RestTemplate())
 	}
 
 	private lateinit var webhookUrl : String
