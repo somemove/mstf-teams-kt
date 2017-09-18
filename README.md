@@ -17,12 +17,26 @@ dependencies {
 
 ## Usage
 
+### Kotlin
+
 ```kotlin
 val payload = JSONObject()
-payload.put("text", "The message text...")
+	.put("text", "The message text...")
 
-val webhookURL = "https://..."
-val teams = Teams.getDefault().with(webhookURL)
+val webhookURL : String = "https://..."
+val client : Teams = Teams().with(webhookURL)
 
-val result : Boolean = teams.publish(payload)
+val result : Boolean = client.publish(payload)
+```
+
+### Java
+
+```java
+JSONObject payload = new JSONObject()
+	.put("text", "The message text...");
+
+String webhookURL = "https://...";
+Teams client = new Teams().with(webhookURL);
+
+boolean result = client.publish(payload);
 ```

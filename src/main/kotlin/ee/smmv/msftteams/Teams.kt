@@ -15,24 +15,25 @@ import org.springframework.web.client.RestTemplate
 import java.net.URI
 import java.nio.charset.StandardCharsets
 
-class Teams private constructor(private var restTemplate : RestTemplate) {
+class Teams {
 
 	companion object {
 		@JvmStatic() private val log : Logger by lazy { LoggerFactory.getLogger(Teams::class.java) }
-
-		@JvmStatic() fun using(restTemplate : RestTemplate) : Teams {
-			return Teams(restTemplate)
-		}
-
-		@JvmStatic() fun getDefault() : Teams {
-			val restTemplate = RestTemplate(SimpleClientHttpRequestFactory())
-			restTemplate.messageConverters.add(0, StringHttpMessageConverter(StandardCharsets.UTF_8))
-
-			return using(restTemplate)
-		}
 	}
 
+	private lateinit var restTemplate : RestTemplate
 	private lateinit var webhookUrl : String
+
+	constructor() {
+		val restTemplate = RestTemplate(SimpleClientHttpRequestFactory())
+		restTemplate.messageConverters.add(0, StringHttpMessageConverter(StandardCharsets.UTF_8))
+
+		this.restTemplate = restTemplate
+	}
+
+	constructor(restTemplate : RestTemplate) {
+		this.restTemplate = restTemplate
+	}
 
 	fun with(webhookUrl : String) : Teams {
 		this.webhookUrl = webhookUrl
