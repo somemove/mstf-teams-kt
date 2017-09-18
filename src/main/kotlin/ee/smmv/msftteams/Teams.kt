@@ -20,6 +20,8 @@ class Teams private constructor(private var restTemplate : RestTemplate) {
 		fun using(restTemplate : RestTemplate) : Teams {
 			return Teams(restTemplate)
 		}
+
+		fun default() = using(RestTemplate())
 	}
 
 	private lateinit var webhookUrl : String
