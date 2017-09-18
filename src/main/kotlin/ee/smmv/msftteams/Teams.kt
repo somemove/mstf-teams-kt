@@ -7,10 +7,13 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.http.client.SimpleClientHttpRequestFactory
+import org.springframework.http.converter.StringHttpMessageConverter
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.client.HttpServerErrorException
 import org.springframework.web.client.RestTemplate
 import java.net.URI
+import java.nio.charset.StandardCharsets
 
 class Teams private constructor(private var restTemplate : RestTemplate) {
 
@@ -21,7 +24,12 @@ class Teams private constructor(private var restTemplate : RestTemplate) {
 			return Teams(restTemplate)
 		}
 
-		@JvmStatic() fun getDefault() = using(RestTemplate())
+		@JvmStatic() fun getDefault() : Teams {
+			val restTemplate = RestTemplate(SimpleClientHttpRequestFactory())
+			restTemplate.messageConverters.add(0, StringHttpMessageConverter(StandardCharsets.UTF_8))
+
+			return using(restTemplate)
+		}
 	}
 
 	private lateinit var webhookUrl : String
