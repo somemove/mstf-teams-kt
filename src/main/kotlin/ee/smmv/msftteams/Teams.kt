@@ -9,6 +9,7 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.http.converter.HttpMessageConverter
 import org.springframework.http.converter.StringHttpMessageConverter
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.client.HttpServerErrorException
@@ -29,7 +30,7 @@ class Teams {
 
 	constructor() : this(
 		RestTemplate(
-			mutableListOf<org.springframework.http.converter.HttpMessageConverter<*>>(
+			mutableListOf<HttpMessageConverter<*>>(
 				StringHttpMessageConverter(StandardCharsets.UTF_8)
 			)
 		)
