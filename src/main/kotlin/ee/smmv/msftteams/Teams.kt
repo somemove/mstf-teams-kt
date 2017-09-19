@@ -27,9 +27,13 @@ class Teams {
 
 	private lateinit var webhookUrl : String
 
-	constructor() {
-		restTemplate = RestTemplate(mutableListOf<org.springframework.http.converter.HttpMessageConverter<*>>(StringHttpMessageConverter(StandardCharsets.UTF_8)))
-	}
+	constructor() : this(
+		RestTemplate(
+			mutableListOf<org.springframework.http.converter.HttpMessageConverter<*>>(
+				StringHttpMessageConverter(StandardCharsets.UTF_8)
+			)
+		)
+	)
 
 	constructor(restTemplate : RestTemplate) {
 		this.restTemplate = restTemplate
