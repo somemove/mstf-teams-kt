@@ -8,26 +8,26 @@ apply plugin: 'org.junit.platform.gradle.plugin'
 
 buildscript {
 	ext {
-		kotlinVersion = '1.+'
-		springVersion = '4.3.11.RELEASE'
-		jacksonVersion = '2.9.1'
-		jsonVersion = '20170516'
-		sl4jVersion = '1.7.+'
-		commongLoggingVersion = '1.+'
-		junitVersion = '5.0.0'
-		junitVintageVersion = '4.12.0'
-		junitPlatformVersion = '1.0.0'
-		jsonUnitVersion = '1.25.0'
+		kotlin_version = '1.3.+'
+		spring_version = '5.1.2.RELEASE'
+		jackson_version = '2.9.+'
+		json_version = '20180813'
+		sl4j_version = '1.7.+'
+		junit_version = '5.0.0'
+		junit_vintage_version = '4.12.0'
+		junit_platform_version = '1.0.0'
+		json_unit_version = '1.25.0'
 	}
 
 	repositories {
 		mavenCentral()
+		jcenter()
 		maven { url 'https://jitpack.io' }
 	}
 
 	dependencies {
-		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
-		classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion"
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+		classpath "org.junit.platform:junit-platform-gradle-plugin:$junit_platform_version"
 	}
 }
 
@@ -37,47 +37,31 @@ repositories {
 }
 
 dependencies {
-	// https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib
-	compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
-	// https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-reflect
-	compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
+	compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+	compile "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}"
 
-	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-	compile "org.slf4j:slf4j-api:$sl4jVersion"
+	compile "org.slf4j:slf4j-api:$sl4j_version"
 
-	// https://mvnrepository.com/artifact/org.springframework/spring-web
-	compile ("org.springframework:spring-web:$springVersion") {
-		exclude group: 'commons-logging', module: 'commons-logging'
+	compile ("org.springframework:spring-web:$spring_version") {
 	}
 
-	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
-	compile "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
-	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-	compile "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
-	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-	compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
-	// https://mvnrepository.com/artifact/com.fasterxml.jackson.module/jackson-module-kotlin
-	compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion"
+	compile "com.fasterxml.jackson.core:jackson-core:$jackson_version"
+	compile "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
+	compile "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
+	compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version"
 
-	// https://mvnrepository.com/artifact/org.json/json
-	compile "org.json:json:$jsonVersion"
+	compile "org.json:json:$json_version"
 
-	// http://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
-	testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
-	// http://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner
-	testRuntime("org.junit.platform:junit-platform-runner:$junitPlatformVersion")
-	// http://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
-	testCompile "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
-	// http://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine
-	testCompile("org.junit.vintage:junit-vintage-engine:$junitVintageVersion")
+	testRuntime("org.junit.platform:junit-platform-launcher:$junit_platform_version")
+	testRuntime("org.junit.platform:junit-platform-runner:$junit_platform_version")
+	testCompile "org.junit.jupiter:junit-jupiter-engine:$junit_version"
+	testCompile("org.junit.vintage:junit-vintage-engine:$junit_vintage_version")
 
-	// https://mvnrepository.com/artifact/net.javacrumbs.json-unit/json-unit-fluent
-	testCompile ("net.javacrumbs.json-unit:json-unit-fluent:$jsonUnitVersion") {
+	testCompile ("net.javacrumbs.json-unit:json-unit-fluent:$json_unit_version") {
 		exclude group: 'junit', module: 'junit'
 	}
 
-	// https://mvnrepository.com/artifact/commons-logging/commons-logging
-	testCompile "commons-logging:commons-logging:$commongLoggingVersion"
+	testRuntime ("org.slf4j:slf4j-simple:$sl4j_version")
 
 }
 
